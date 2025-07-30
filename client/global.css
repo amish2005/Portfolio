@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Portfolio Dark Theme
+   * All color variables are expressed as HSL values for consistency with tailwind config.
+   */
+  :root {
+    /* Base System Colors */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+
+    --radius: 0.75rem;
+
+    /* Portfolio Specific Colors */
+    --portfolio-bg: 220 27% 8%;
+    --portfolio-surface: 224 27% 12%;
+    --portfolio-accent: 266 85% 58%;
+    --portfolio-accent-hover: 266 85% 65%;
+    --portfolio-text: 210 40% 98%;
+    --portfolio-text-muted: 215 20.2% 65.1%;
+    --portfolio-gradient-from: 266 85% 58%;
+    --portfolio-gradient-to: 310 80% 60%;
+
+    /* Sidebar Colors */
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-portfolio-bg text-portfolio-text;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  }
+
+  /* Custom scrollbar for dark theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-portfolio-bg;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-portfolio-accent rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-portfolio-accent-hover;
+  }
+
+  /* Selection styling */
+  ::selection {
+    @apply bg-portfolio-accent text-white;
+  }
+
+  /* Focus visible styling */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-portfolio-accent ring-offset-2 ring-offset-portfolio-bg;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-portfolio-gradient-from to-portfolio-gradient-to bg-clip-text text-transparent;
+  }
+
+  .glass-effect {
+    @apply bg-white/5 backdrop-blur-sm border border-white/10;
+  }
+
+  .section-padding {
+    @apply px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16;
+  }
+
+  .container-width {
+    @apply max-w-[95vw] lg:max-w-[92vw] xl:max-w-[90vw] 2xl:max-w-[88vw] mx-auto;
+  }
+}

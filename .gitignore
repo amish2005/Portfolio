@@ -1,0 +1,62 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+bower_components/
+
+# Build output
+dist/
+build/
+dist-ssr/
+.next/
+out/
+
+# Environment files
+.env
+.env.*.local
+*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor settings
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs folder
+logs/
+
+# Optional npm cache
+.npm/
+
+# TypeScript
+*.tsbuildinfo
+
+# MongoDB dump files
+dump/
+
+# Coverage reports
+coverage/
+
+# Misc
+.config/
