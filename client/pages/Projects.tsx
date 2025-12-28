@@ -24,7 +24,7 @@ export default function Projects() {
 
   const categories = [
     { id: "all", label: "All Projects", icon: Code2 },
-    { id: "ml", label: "Machine Learning", icon: Brain },
+    { id: "ml", label: "AI Projects", icon: Brain },
     { id: "mobile", label: "Mobile Apps", icon: Smartphone },
     { id: "fullstack", label: "Full Stack", icon: Database }
   ];

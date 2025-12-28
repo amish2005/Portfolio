@@ -71,7 +71,7 @@ export default function Navigation() {
                 className="bg-portfolio-accent hover:bg-portfolio-accent-hover text-white"
               >
                 <a
-                  href="https://drive.usercontent.google.com/u/0/uc?id=1rwXiD39FQpCt-fzlMjMVsKz9qHtc0H-d&export=download"
+                  href="https://drive.usercontent.google.com/u/0/uc?id=1_GP4kk5J4e5CUK73ne3bCN6w1BgG4hCV&export=download"
                   download
                   className="flex items-center space-x-2"
                 >

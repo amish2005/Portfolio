@@ -97,7 +97,7 @@ export default function About() {
         { name: "Recursion & Backtracking", level: 80 },
         { name: "HashMaps & Heaps", level: 80 },
         { name: "Trees & Graphs", level: 50 },
-        { name: "DP & Memoization", level: 20 },
+        { name: "DP & Memoization", level: 80 },
         { name: "Greedy Algorithms", level: 80 }
       ]
     }
@@ -147,7 +147,15 @@ export default function About() {
 
   const experience = [
     {
-      title: "Backend Developer Intern",
+      title: "Software Developer Intern",
+      company: "Smalsus Infolabs",
+      link: "#",
+      period: "Dec 2025 - Jan 2026",
+      description: "Worked as a Web Developer Intern, contributing to the development of scalable and high-performance web interfaces while gaining exposure to enterprise-level application workflows.",
+      technologies: ["Applied advanced React.js (Hooks, Context API, state management) to build responsive UI components.", "Explored SharePoint backends, working with REST APIs and authentication flows.", "Gained exposure to production-level AI integrations in real-world applications."],
+    },
+    {
+      title: "Web Developer Intern",
       company: "Tranova GlobalScapes",
       link: "https://drive.google.com/file/d/1S-rAgiy49fP9a9qK3O4DkU1LZLIlzSjw/view?usp=sharing",
       period: "June 2025 - Present",
@@ -261,7 +269,7 @@ export default function About() {
                   size="lg"
                   className="bg-portfolio-accent hover:bg-portfolio-accent-hover text-white px-8 py-3"
                 >
-                  <a href="https://drive.usercontent.google.com/u/0/uc?id=1rwXiD39FQpCt-fzlMjMVsKz9qHtc0H-d&export=download" download className="flex items-center gap-2">
+                  <a href="https://drive.usercontent.google.com/u/0/uc?id=1_GP4kk5J4e5CUK73ne3bCN6w1BgG4hCV&export=download" download className="flex items-center gap-2">
                     <Download className="w-4 h-4" />
                     Download Resume
                   </a>
