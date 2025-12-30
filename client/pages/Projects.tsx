@@ -99,7 +99,7 @@ export default function Projects() {
                   placeholder="Search projects by name, description, or technology..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 bg-portfolio-bg/50 border-white/10 text-portfolio-text placeholder-portfolio-text-muted focus:border-portfolio-accent"
+                  className="pl-10 bg-portfolio-bg/50 border-portfolio-accent/20 text-portfolio-text placeholder-portfolio-text-muted focus:border-portfolio-accent"
                 />
               </div>
               <div className="flex items-center gap-2 text-portfolio-text-muted">
@@ -117,8 +117,8 @@ export default function Projects() {
                     key={category.id}
                     onClick={() => setSelectedCategory(category.id)}
                     className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${selectedCategory === category.id
-                        ? "bg-portfolio-accent text-white"
-                        : "bg-portfolio-surface/50 text-portfolio-text-muted hover:bg-portfolio-surface/80 hover:text-portfolio-text"
+                      ? "bg-portfolio-accent text-white"
+                      : "bg-portfolio-surface/50 text-portfolio-text-muted hover:bg-portfolio-surface/80 hover:text-portfolio-text"
                       }`}
                   >
                     <Icon className="w-4 h-4" />
@@ -130,90 +130,81 @@ export default function Projects() {
           </div>
 
           {/* Projects Grid */}
-          <div className="flex flex-wrap justify-evenly gap-6">
-
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
             {filteredProjects.map((project, index) => (
               <Card
                 key={index}
-                className="w-[375px] group bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50 hover:border-portfolio-accent/30 transition-all duration-200 overflow-hidden"
+                className="group bg-portfolio-surface/50 hover:bg-portfolio-surface/80 transition-all duration-200 overflow-hidden"
               >
-                {/* Header with badges */}
-                <div className="p-4 flex justify-between items-start">
-                  {project.featured && (
-                    <div className="bg-amber-500 text-black px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide">
-                      Featured
-                    </div>
-                  )}
-                  <a href={project.githubUrl} target="_blank"
-                    rel="noopener noreferrer"
-                    className="block">
-                    <button className="w-8 h-8 bg-slate-700 hover:bg-slate-600 rounded-full flex items-center justify-center transition-all duration-200 opacity-0 group-hover:opacity-100">
-                      <Github className="w-4 h-4 text-slate-300" />
-                    </button>
-                  </a>
-                </div>
-
-                {/* Project Icon/Image Area */}
-                <div className="px-4 pb-6">
-                  <div className="w-20 h-16 mx-auto bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center mb-6">
-                    <Laptop className="w-8 h-8 text-white" />
+                <div className="aspect-video bg-portfolio-bg/50 relative overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute top-4 left-4 flex gap-2 flex-wrap">
+                    {project.featured && (
+                      <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500 text-black shadow-lg">
+                        Featured
+                      </span>
+                    )}
+                    {project.category.map((cat, idx) => (
+                      <span
+                        key={idx}
+                        className={`px-3 py-1 rounded-full text-xs font-medium ${cat === "ml"
+                          ? "bg-pink-500/20 text-pink-400"
+                          : "bg-blue-500/20 text-blue-400"
+                          }`}
+                      >
+                        {cat === "ml" ? "ML Project" : "Dev Project"}
+                      </span>
+                    ))}
                   </div>
                 </div>
-                
 
-                {/* Content */}
-                <div className="px-6 pb-6">
-                  <h3 className="text-xl font-bold text-cyan-400 mb-3">
+                <CardContent className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-3 text-portfolio-text group-hover:text-portfolio-accent transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-slate-300 text-sm leading-relaxed mb-6">
+                  <p className="text-portfolio-text-muted mb-4 text-sm sm:text-base leading-relaxed">
                     {project.description}
                   </p>
 
-                  {/* Tech Stack Icons */}
-                  <div className="flex gap-3 mb-6">
-                    {[Database, Globe, Smartphone, Brain].slice(0, 4).map((Icon, iconIndex) => (
-                      <div key={iconIndex} className="w-8 h-8 bg-slate-700 rounded-lg flex items-center justify-center">
-                        <Icon className="w-4 h-4 text-slate-400" />
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Tech Tags */}
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tags.slice(0, 4).map((tag, tagIndex) => (
+                    {project.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className="px-3 py-1 bg-slate-700 text-slate-300 text-xs rounded-md border border-slate-600"
+                        className="px-2 py-1 bg-portfolio-accent/5 text-portfolio-text-muted text-xs rounded-md"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  {/* Stats */}
-                  <div className="grid grid-cols-3 gap-4 pt-4 border-t border-slate-700">
-                    {(project.info1) && (
-                      <div className="text-center">
-                        <div className="text-md font-bold text-cyan-400">{project.info1}</div>
-                        <div className="text-xs text-slate-400">{project.head1}</div>
-                      </div>
-                    )}
-
-                    {(project.info2) && (
-                      <div className="text-center">
-                        <div className="text-md font-bold text-cyan-400">{project.info2}</div>
-                        <div className="text-xs text-slate-400">{project.head2}</div>
-                      </div>
-                    )}
-                    {(project.info3) && (
-                      <div className="text-center">
-                        <div className="font-bold text-cyan-400 text-md">{project.info3}</div>
-                        <div className="text-xs text-slate-400">{project.head3}</div>
-                      </div>
-                    )}
+                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                    <Button
+                      asChild
+                      size="sm"
+                      className="bg-portfolio-accent hover:bg-portfolio-accent-hover text-white w-full sm:w-auto"
+                    >
+                      <a href={project.liveUrl} className="flex items-center justify-center gap-2">
+                        <ExternalLink className="w-4 h-4" />
+                        Live Demo
+                      </a>
+                    </Button>
+                    <Button
+                      asChild
+                      size="sm"
+                      variant="outline"
+                      className="border-portfolio-accent/30 text-portfolio-text-muted hover:bg-portfolio-accent/10 w-full sm:w-auto"
+                    >
+                      <a href={project.githubUrl} className="flex items-center justify-center gap-2">
+                        <Github className="w-4 h-4" />
+                        Code
+                      </a>
+                    </Button>
                   </div>
-                </div>
+                </CardContent>
               </Card>
             ))}
           </div>

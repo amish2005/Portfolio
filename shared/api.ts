@@ -10,3 +10,16 @@
 export interface DemoResponse {
   message: string;
 }
+
+export interface PlatformStats {
+  solved: number;
+  stats: { label: string; value: string }[];
+  isActive?: boolean;
+}
+
+export interface StatsResponse {
+  leetcode: PlatformStats;
+  codeforces: PlatformStats;
+  codechef: PlatformStats;
+  geeksforgeeks: PlatformStats;
+}

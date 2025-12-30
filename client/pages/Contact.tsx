@@ -37,15 +37,26 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({ name: "", email: "", subject: "", message: "" });
+      if (!response.ok) throw new Error("Failed to send message");
 
-    // Reset success message after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000);
+      setIsSubmitted(true);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+
+      // Reset success message after 5 seconds
+      setTimeout(() => setIsSubmitted(false), 5000);
+    } catch (error) {
+      console.error("Submission error:", error);
+      alert("Failed to send message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -184,7 +195,7 @@ export default function Contact() {
                     Available for Work
                   </h3>
                 </div>
-                <p className="text-slate-300">
+                <p className="text-portfolio-text-muted">
                   I'm currently accepting new freelance projects and
                   collaborations. Let's discuss how we can work together to
                   bring your ideas to life.
@@ -205,9 +216,9 @@ export default function Contact() {
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-                      className={`w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center border border-slate-700 hover:border-slate-600 transition-all duration-300 ${social.color}`}
+                      className={`w-12 h-12 bg-portfolio-surface/50 rounded-lg flex items-center justify-center border border-portfolio-accent/20 hover:border-portfolio-accent transition-all duration-300 ${social.color}`}
                     >
-                      <social.icon className="text-xl" />
+                      <social.icon className="text-xl text-portfolio-text group-hover:text-current" />
                     </motion.a>
                   ))}
                 </div>
@@ -244,7 +255,7 @@ export default function Contact() {
                             value={formData.name}
                             onChange={handleChange}
                             required
-                            className="h-16 bg-portfolio-bg/50 border-white/10 text-portfolio-text placeholder-portfolio-text-muted focus:border-portfolio-accent"
+                            className="h-16 bg-portfolio-bg/50 border-portfolio-accent/20 text-portfolio-text placeholder-portfolio-text-muted focus:border-portfolio-accent"
                             placeholder="Your full name"
                           />
                         </div>
@@ -260,7 +271,7 @@ export default function Contact() {
                             value={formData.email}
                             onChange={handleChange}
                             required
-                            className="h-16 bg-portfolio-bg/50 border-white/10 text-portfolio-text placeholder-portfolio-text-muted focus:border-portfolio-accent"
+                            className="h-16 bg-portfolio-bg/50 border-portfolio-accent/20 text-portfolio-text placeholder-portfolio-text-muted focus:border-portfolio-accent"
                             placeholder="your.email@example.com"
                           />
                         </div>
@@ -277,7 +288,7 @@ export default function Contact() {
                           value={formData.subject}
                           onChange={handleChange}
                           required
-                          className="h-16 bg-portfolio-bg/50 border-white/10 text-portfolio-text placeholder-portfolio-text-muted focus:border-portfolio-accent"
+                          className="h-16 bg-portfolio-bg/50 border-portfolio-accent/20 text-portfolio-text placeholder-portfolio-text-muted focus:border-portfolio-accent"
                           placeholder="What would you like to discuss?"
                         />
                       </div>
@@ -294,7 +305,7 @@ export default function Contact() {
                           onChange={handleChange}
                           required
                           rows={14}
-                          className="bg-portfolio-bg/50 border-white/10 text-portfolio-text placeholder-portfolio-text-muted focus:border-portfolio-accent resize-none"
+                          className="bg-portfolio-bg/50 border-portfolio-accent/20 text-portfolio-text placeholder-portfolio-text-muted focus:border-portfolio-accent resize-none"
                           placeholder="Tell me about your project, ideas, or any questions you have..."
                         />
                       </div>

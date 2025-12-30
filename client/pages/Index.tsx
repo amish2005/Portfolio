@@ -58,7 +58,7 @@ export default function Index() {
                 </h1>
                 <div className="relative inline-block">
                   <h1 className="font-extrabold text-2xl sm:text-3xl md:text-4xl xl:text-4xl leading-tight">
-                    <span className="text-white">Full Stack</span>
+                    <span className="text-portfolio-text">Full Stack</span>
                     <span
                       className="block sm:inline ml-0 sm:ml-2 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent"
                     >
@@ -170,8 +170,8 @@ export default function Index() {
                       <span
                         key={idx}
                         className={`px-3 py-1 rounded-full text-xs font-medium ${cat === "ml"
-                            ? "bg-pink-500/20 text-pink-400"
-                            : "bg-blue-500/20 text-blue-400"
+                          ? "bg-pink-500/20 text-pink-400"
+                          : "bg-blue-500/20 text-blue-400"
                           }`}
                       >
                         {cat === "ml" ? "ML Project" : "Dev Project"}
@@ -193,7 +193,7 @@ export default function Index() {
                     {project.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className="px-2 py-1 bg-white/5 text-portfolio-text-muted text-xs rounded-md"
+                        className="px-2 py-1 bg-portfolio-accent/5 text-portfolio-text-muted text-xs rounded-md"
                       >
                         {tag}
                       </span>

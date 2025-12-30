@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Code2, User, Briefcase, Mail, FileText } from "lucide-react";
+import { Menu, X, Code2, User, Briefcase, Mail, FileText, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,6 +23,7 @@ export default function Navigation() {
     { href: "/", label: "Home", icon: Code2 },
     { href: "/about", label: "About", icon: User },
     { href: "/projects", label: "Projects", icon: Briefcase },
+    { href: "/problemsolving", label: "Problem Solving", icon: Trophy },
     { href: "/contact", label: "Contact", icon: Mail },
   ];
 
@@ -29,11 +32,10 @@ export default function Navigation() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-portfolio-surface/90 backdrop-blur-md border-b border-white/10"
-            : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+          ? "bg-portfolio-surface/90 backdrop-blur-md border-b border-white/10"
+          : "bg-transparent"
+          }`}
       >
         <div className="container-width section-padding">
           <div className="flex items-center justify-between h-16">
@@ -55,51 +57,56 @@ export default function Navigation() {
                   <Link
                     key={link.href}
                     to={link.href}
-                    className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 ${
-                      isActive
-                        ? "text-portfolio-accent bg-portfolio-accent/10"
-                        : "text-portfolio-text-muted hover:text-portfolio-text hover:bg-white/5"
-                    }`}
+                    className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 ${isActive
+                      ? "text-portfolio-accent bg-portfolio-accent/10"
+                      : "text-portfolio-text-muted hover:text-portfolio-text hover:bg-white/5"
+                      }`}
                   >
                     <Icon className="w-4 h-4" />
                     <span>{link.label}</span>
                   </Link>
                 );
               })}
-              <Button
-                asChild
-                className="bg-portfolio-accent hover:bg-portfolio-accent-hover text-white"
-              >
-                <a
-                  href="https://drive.usercontent.google.com/u/0/uc?id=1_GP4kk5J4e5CUK73ne3bCN6w1BgG4hCV&export=download"
-                  download
-                  className="flex items-center space-x-2"
+              <div className="flex items-center gap-4">
+                <ThemeToggle />
+                <Button
+                  asChild
+                  className="bg-portfolio-accent hover:bg-portfolio-accent-hover text-white"
                 >
-                  <FileText className="w-4 h-4" />
-                  <span>Resume</span>
-                </a>
-              </Button>
+                  <a
+                    href="https://drive.usercontent.google.com/u/0/uc?id=1_GP4kk5J4e5CUK73ne3bCN6w1BgG4hCV&export=download"
+                    download
+                    className="flex items-center space-x-2"
+                  >
+                    <FileText className="w-4 h-4" />
+                    <span>Resume</span>
+                  </a>
+                </Button>
+              </div>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={toggleMenu}
-              className="md:hidden p-2 rounded-lg hover:bg-white/5 transition-colors"
-            >
-              {isOpen ? (
-                <X className="w-6 h-6 text-portfolio-text" />
-              ) : (
-                <Menu className="w-6 h-6 text-portfolio-text" />
-              )}
-            </button>
+            {/* Mobile Actions */}
+            <div className="flex md:hidden items-center gap-4">
+              <ThemeToggle />
+              <button
+                onClick={toggleMenu}
+                className="p-2 rounded-lg hover:bg-white/5 transition-colors"
+                aria-label="Toggle menu"
+              >
+                {isOpen ? (
+                  <X className="w-6 h-6 text-portfolio-text" />
+                ) : (
+                  <Menu className="w-6 h-6 text-portfolio-text" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         <div
-          className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-            isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-          }`}
+          className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+            }`}
         >
           <div className="px-6 py-4 bg-portfolio-surface/95 backdrop-blur-md border-t border-white/10">
             <div className="flex flex-col space-y-3">
@@ -111,11 +118,10 @@ export default function Navigation() {
                     key={link.href}
                     to={link.href}
                     onClick={() => setIsOpen(false)}
-                    className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${
-                      isActive
-                        ? "text-portfolio-accent bg-portfolio-accent/10"
-                        : "text-portfolio-text-muted hover:text-portfolio-text hover:bg-white/5"
-                    }`}
+                    className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${isActive
+                      ? "text-portfolio-accent bg-portfolio-accent/10"
+                      : "text-portfolio-text-muted hover:text-portfolio-text hover:bg-white/5"
+                      }`}
                   >
                     <Icon className="w-5 h-5" />
                     <span>{link.label}</span>
@@ -127,7 +133,7 @@ export default function Navigation() {
                 className="bg-portfolio-accent hover:bg-portfolio-accent-hover text-white mt-4"
               >
                 <a
-                  href="/resume.pdf"
+                  href="https://drive.usercontent.google.com/u/0/uc?id=1_GP4kk5J4e5CUK73ne3bCN6w1BgG4hCV&export=download"
                   download
                   className="flex items-center justify-center space-x-2"
                   onClick={() => setIsOpen(false)}

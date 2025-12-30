@@ -198,6 +198,23 @@ export default function About() {
     // }
   ];
 
+  const education = [
+    {
+      degree: "Bachelor of Technology in Electronics and Communication Engineering",
+      school: "Delhi Technological University",
+      year: "2024 - 2028",
+      description: "Focused on Data Structures, Algorithms, and Web Technologies. Active member of technical societies and coding clubs.",
+      grade: "CGPA: 8.45"
+    },
+    {
+      degree: "Higher Secondary Education (Class XII)",
+      school: "RD International School",
+      year: "2021 - 2023",
+      description: "Specialized in Physics, Chemistry, and Mathematics (PCM).",
+      grade: "Percentage: 93.3 (PCM)"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-portfolio-bg">
       <Navigation />
@@ -301,9 +318,28 @@ export default function About() {
                     I'm also a strong believer in continuous learning and collaboration. Whether it's contributing to open-source projects, mentoring peers, or participating in tech communities, I find immense value in sharing knowledge and growing together. I take pride in writing clean, maintainable code and am always exploring better ways to solve real-world problems — not just for the present, but with future scalability in mind.
                   </p>
 
-                  <p>
-                    When I'm not immersed in code, you'll find me enjoying a game of cricket, experimenting with new technologies, or working on side projects that combine creativity with code. Whether it’s through clean code, thoughtful architecture, or creative expression, I strive to build experiences that make an impact.
-                  </p>
+
+                </div>
+              </div>
+
+              {/* Education Section - Integrated into Hero Column */}
+              <div className="mt-8">
+                <h2 className="text-2xl font-bold mb-6 text-portfolio-text flex items-center gap-2">
+                  <div className="w-2 h-8 bg-portfolio-accent rounded-full" />
+                  Education
+                </h2>
+                <div className="space-y-6">
+                  {education.map((edu, index) => (
+                    <div key={index} className="relative pl-6 border-l-2 border-portfolio-accent/20 hover:border-portfolio-accent transition-colors duration-300">
+                      <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-portfolio-bg border-2 border-portfolio-accent" />
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1">
+                        <h3 className="text-lg font-semibold text-portfolio-text">{edu.school}</h3>
+                        <span className="text-sm font-medium text-portfolio-accent">{edu.year}</span>
+                      </div>
+                      <p className="text-portfolio-text-muted font-medium mb-1">{edu.degree}</p>
+                      <p className="text-sm text-portfolio-text-muted">{edu.description}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -440,14 +476,14 @@ export default function About() {
               return (
                 <Card
                   key={categoryIndex}
-                  className="w-[320px] bg-slate-800/80 border border-slate-700/50 hover:bg-slate-800/90 transition-all duration-200 overflow-hidden"
+                  className="w-[320px] bg-portfolio-surface/50 border border-portfolio-accent/20 hover:bg-portfolio-surface/80 transition-all duration-200 overflow-hidden"
                 >
                   <CardContent className="p-8">
                     <div className="mb-6">
-                      <h3 className="text-xl font-semibold text-cyan-400 mb-2">
+                      <h3 className="text-xl font-semibold text-portfolio-accent mb-2">
                         {category.name}
                       </h3>
-                      <p className="text-sm text-slate-400">
+                      <p className="text-sm text-portfolio-text-muted">
                         {category.description}
                       </p>
                     </div>
@@ -505,18 +541,18 @@ export default function About() {
                                 <div className={`w-6 h-6 rounded ${getSkillColor(skill.name)} flex items-center justify-center text-white text-xs font-bold`}>
                                   {getSkillIcon(skill.name)}
                                 </div>
-                                <span className="text-sm font-medium text-white">
+                                <span className="text-sm font-medium text-portfolio-text">
                                   {skill.name}
                                 </span>
                               </div>
-                              <span className="text-sm font-semibold text-slate-300">
+                              <span className="text-sm font-semibold text-portfolio-text-muted">
                                 {skill.level}%
                               </span>
                             </div>
                             <div className="relative">
-                              <div className="w-full h-2 bg-slate-700 rounded-full overflow-hidden">
+                              <div className="w-full h-2 bg-portfolio-surface rounded-full overflow-hidden">
                                 <div
-                                  className="h-full bg-cyan-400 rounded-full transition-all duration-500 ease-out"
+                                  className="h-full bg-portfolio-accent rounded-full transition-all duration-500 ease-out"
                                   style={{
                                     width: hoveredSkill === `${categoryIndex}-${skillIndex}` ? `${skill.level}%` : `${skill.level}%`
                                   }}
@@ -555,76 +591,76 @@ export default function About() {
                 rel="noopener noreferrer"
                 className="group transition-all duration-300 hover:scale-[1.02]"
               >
-              <Card
-                key={index}
-                className="w-full sm:w-[90%] md:w-[400px] bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50 hover:border-portfolio-accent/30 transition-all duration-200 overflow-hidden"
-              >
-                {/* Header */}
-                <div className="p-6 border-b border-slate-700/50">
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-bold text-cyan-400">
-                      {hackathon.title}
-                    </h3>
-                    <div className="bg-gradient-to-r from-amber-500 to-orange-500 text-black px-3 py-1 rounded-full text-xs font-semibold">
-                      {hackathon.achievement}
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-4 text-sm text-slate-400 mb-4">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="w-4 h-4" />
-                      <span>{hackathon.date}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Target className="w-4 h-4" />
-                      <span>{hackathon.category}</span>
-                    </div>
-                  </div>
-
-                  <p className="text-slate-300 text-sm leading-relaxed">
-                    {hackathon.description}
-                  </p>
-                </div>
-
-                {/* Technologies */}
-                <div className="p-6 border-b border-slate-700/50">
-                  <h4 className="text-sm font-semibold text-slate-400 mb-3">Technologies Used:</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {hackathon.technologies.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="px-3 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded-md border border-cyan-500/30"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Impact & Prize */}
-                <div className="p-6">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <Users className="w-4 h-4 text-purple-400" />
-                        <span className="text-sm font-semibold text-purple-400">Impact</span>
+                <Card
+                  key={index}
+                  className="w-full sm:w-[90%] md:w-[400px] bg-portfolio-surface/50 border border-portfolio-accent/20 hover:border-portfolio-accent/50 transition-all duration-200 overflow-hidden"
+                >
+                  {/* Header */}
+                  <div className="p-6 border-b border-portfolio-accent/10">
+                    <div className="flex justify-between items-start mb-4">
+                      <h3 className="text-xl font-bold text-portfolio-accent">
+                        {hackathon.title}
+                      </h3>
+                      <div className="bg-gradient-to-r from-amber-500 to-orange-500 text-black px-3 py-1 rounded-full text-xs font-semibold">
+                        {hackathon.achievement}
                       </div>
-                      <p className="text-xs text-slate-300 leading-relaxed">
-                        {hackathon.impact}
-                      </p>
                     </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <Zap className="w-4 h-4 text-amber-400" />
-                        <span className="text-sm font-semibold text-amber-400">Prize</span>
+
+                    <div className="flex items-center gap-4 text-sm text-portfolio-text-muted mb-4">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="w-4 h-4" />
+                        <span>{hackathon.date}</span>
                       </div>
-                      <p className="text-xs text-slate-300 leading-relaxed">
-                        {hackathon.prize}
-                      </p>
+                      <div className="flex items-center gap-1">
+                        <Target className="w-4 h-4" />
+                        <span>{hackathon.category}</span>
+                      </div>
+                    </div>
+
+                    <p className="text-portfolio-text-muted text-sm leading-relaxed">
+                      {hackathon.description}
+                    </p>
+                  </div>
+
+                  {/* Technologies */}
+                  <div className="p-6 border-b border-portfolio-accent/10">
+                    <h4 className="text-sm font-semibold text-portfolio-text-muted mb-3">Technologies Used:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {hackathon.technologies.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="px-3 py-1 bg-portfolio-accent/10 text-portfolio-accent text-xs rounded-md border border-portfolio-accent/20"
+                        >
+                          {tech}
+                        </span>
+                      ))}
                     </div>
                   </div>
-                </div>
-              </Card>
+
+                  {/* Impact & Prize */}
+                  <div className="p-6">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <div className="flex items-center gap-2 mb-2">
+                          <Users className="w-4 h-4 text-purple-400" />
+                          <span className="text-sm font-semibold text-purple-400">Impact</span>
+                        </div>
+                        <p className="text-xs text-portfolio-text-muted leading-relaxed">
+                          {hackathon.impact}
+                        </p>
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2 mb-2">
+                          <Zap className="w-4 h-4 text-amber-400" />
+                          <span className="text-sm font-semibold text-amber-400">Prize</span>
+                        </div>
+                        <p className="text-xs text-portfolio-text-muted leading-relaxed">
+                          {hackathon.prize}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
               </a>
             ))}
           </div>
