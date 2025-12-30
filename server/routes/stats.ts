@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { StatsResponse, PlatformStats } from "@shared/api";
+import { StatsResponse, PlatformStats } from "../../shared/api";
 
 const LEETCODE_USERNAME = "amish04";
 const CODEFORCES_USERNAME = "amish04";
