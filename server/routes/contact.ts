@@ -14,10 +14,15 @@ export const handleContact: RequestHandler = async (req, res) => {
     try {
         const data = contactSchema.parse(req.body);
 
+        // Debug: Check if env vars are loaded (don't log the password!)
+        console.log("Attempting to send email...");
+        console.log("EMAIL_USER present:", !!process.env.EMAIL_USER);
+        console.log("EMAIL_PASS present:", !!process.env.EMAIL_PASS);
+
         const transporter = nodemailer.createTransport({
             host: "smtp.gmail.com",
-            port: 465,
-            secure: true, // Use SSL/TLS
+            port: 587,
+            secure: false, // Use STARTTLS
             auth: {
                 user: process.env.EMAIL_USER,
                 pass: process.env.EMAIL_PASS,
