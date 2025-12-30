@@ -26,8 +26,8 @@ export const handleContact: RequestHandler = async (req, res) => {
 
         const { error } = await resend.emails.send({
             from: "Portfolio <onboarding@resend.dev>", // Resend free tier requirement
-            to: ["amish040404@gmail.com"], // Hardcoded or use EMAIL_USER if it's the target
-            reply_to: data.email,
+            to: ["amishsharma2005@gmail.com"], // Must be your verified Resend email
+            replyTo: data.email,
             subject: `Portfolio Contact: ${data.subject}`,
             html: `
                 <h3>New Contact Message</h3>
