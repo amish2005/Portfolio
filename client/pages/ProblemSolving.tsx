@@ -15,7 +15,7 @@ import { useQuery } from "@tanstack/react-query";
 import { StatsResponse } from "@shared/api";
 
 export default function ProblemSolving() {
-    const { data: stats, isLoading } = useQuery<StatsResponse>({
+    const { data: stats, isLoading, isError } = useQuery<StatsResponse>({
         queryKey: ["stats"],
         queryFn: async () => {
             const res = await fetch("/api/stats");
@@ -77,7 +77,25 @@ export default function ProblemSolving() {
     if (isLoading) {
         return (
             <div className="min-h-screen bg-portfolio-bg flex items-center justify-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-portfolio-accent"></div>
+                <div className="flex flex-col items-center gap-4">
+                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-portfolio-accent"></div>
+                    <p className="text-portfolio-text-muted animate-pulse">Fetching latest stats...</p>
+                </div>
+            </div>
+        );
+    }
+
+    if (isError) {
+        return (
+            <div className="min-h-screen bg-portfolio-bg flex items-center justify-center">
+                <div className="text-center space-y-4">
+                    <div className="text-red-500 text-5xl mb-2">⚠️</div>
+                    <h2 className="text-2xl font-bold text-portfolio-text">Failed to load stats</h2>
+                    <p className="text-portfolio-text-muted">Could not fetch data from coding platforms.</p>
+                    <Button onClick={() => window.location.reload()} variant="outline">
+                        Try Again
+                    </Button>
+                </div>
             </div>
         );
     }
