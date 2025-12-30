@@ -1,4 +1,4 @@
-import { createServer } from '../dist/server/production.mjs';
+import { createServer } from '../server';
 import serverless from 'serverless-http';
 
 const app = createServer();
