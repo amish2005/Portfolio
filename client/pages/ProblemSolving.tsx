@@ -13,12 +13,13 @@ import Navigation from "@/components/Navigation";
 
 import { useQuery } from "@tanstack/react-query";
 import { StatsResponse } from "@shared/api";
+import { API_BASE_URL } from "@/config";
 
 export default function ProblemSolving() {
     const { data: stats, isLoading } = useQuery<StatsResponse>({
         queryKey: ["stats"],
         queryFn: async () => {
-            const res = await fetch("/api/stats");
+            const res = await fetch(`${API_BASE_URL}/api/stats`);
             if (!res.ok) throw new Error("Failed to fetch stats");
             return res.json();
         }
