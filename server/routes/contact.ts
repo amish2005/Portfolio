@@ -15,11 +15,14 @@ export const handleContact: RequestHandler = async (req, res) => {
         const data = contactSchema.parse(req.body);
 
         const transporter = nodemailer.createTransport({
-            service: "gmail",
+            host: "smtp.gmail.com",
+            port: 465,
+            secure: true, // Use SSL/TLS
             auth: {
                 user: process.env.EMAIL_USER,
                 pass: process.env.EMAIL_PASS,
             },
+            connectionTimeout: 10000, // 10 seconds
         });
 
         const mailOptions = {
