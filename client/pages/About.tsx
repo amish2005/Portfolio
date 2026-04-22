@@ -286,7 +286,7 @@ export default function About() {
                   size="lg"
                   className="bg-portfolio-accent hover:bg-portfolio-accent-hover text-white px-8 py-3"
                 >
-                  <a href="https://drive.usercontent.google.com/u/0/uc?id=1_GP4kk5J4e5CUK73ne3bCN6w1BgG4hCV&export=download" download className="flex items-center gap-2">
+                  <a href="https://drive.google.com/uc?export=download&id=1aFuz6PY4cXi3QahBPvbGsaMDjdlnDoOe" download className="flex items-center gap-2">
                     <Download className="w-4 h-4" />
                     Download Resume
                   </a>
